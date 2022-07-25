@@ -1,0 +1,575 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Sen đỏ</title>
+	<style>
+		.container {
+			width: 100%;
+			height: 100%;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+		}
+		.form-content {
+			width: 100%;
+			height: 100%;
+			background: #fff;
+		}
+		.form-top {
+			width: 100%;
+			height: 144px;
+		}
+		.form-top-title {
+			width: 100%;
+			height: 22%;
+			background: #D52220;
+			display: flex;
+			justify-content: center;
+		}
+		.form-top-title div {
+			width: 68%;
+		}
+		
+		.form-top-title a {
+			color: #FFFFFF;
+			font: 13px Roboto, sans-serif;
+			box-sizing: border-box;
+			font-family: inherit;
+			text-decoration: none;
+			line-height: 30px;
+			font-weight: 700;
+			padding-right: 24px;
+		}
+		.form-top-title a:hover {
+			cursor: pointer;
+		}
+		
+		.form-top-search {
+			width: 100%;
+			height: 44.3%;
+			background: #EE2624;
+			display: flex;        
+			justify-content: center;
+			align-items: center;
+		}
+		
+		.form-top-search img {
+			width: 90;
+			height: 40;
+		}
+		
+		.form-top-search img:hover {
+			cursor: pointer;
+		}
+		
+		.form-top-menu {
+			width: 100%;
+			height: 32.7%;
+			display: flex;
+			margin: 0 auto;
+			background: #EE2624;
+		}
+		
+		.form-top-menu li:first-child {
+		    list-style: none;
+			padding-top: 12px;
+			border-bottom: 3px solid #FFFFFF;
+		}
+		
+		.form-top-menu li:not(:first-child) {
+			list-style: none;
+			padding-top: 15px;
+		}
+		.form-icon-menu {
+			width: 40px;
+			height: 40px;
+			margin: 0px 6px 0px 25px;
+			border-radius: 5px;
+		}
+		.form-icon-menu:hover {
+			background: #D52220;
+			cursor: pointer;
+		}
+		.form-icon-menu img{
+			width: 24px;
+			height: 24px;
+			padding-top: 8px;
+		}
+		.form-text-search {
+			height: 40px;
+		}
+		.form-text-search input {
+			width:930px;
+			height:40px;
+			border: none;
+			outline: none;
+			padding: 8px 16px;
+			border-radius: 4px;
+		}
+		.form-text-search button {
+			width: 40px;
+			height: 40px;
+			border: none;
+			margin-left: 5px;
+			border-radius: 5px;
+		}
+		.form-text-search button:hover {
+			cursor: pointer;
+		}
+		.form-text-search img{
+			width: 24px;
+			height: 24px;
+		}
+		.icon-bag img{
+			width: 24px;
+			height:24px;
+			margin-left: 24px;
+			margin-right: 24px;
+		}   
+		.icon-bag:hover {
+			cursor: pointer;
+		}
+		.btn-dang-nhap {
+			width: 99.2;
+			height: 32.05;
+			font-size: 14px;
+			background: #FFFFFF;
+			border: none;
+			border-radius: 4px;
+			font-weight: 700;
+		}
+		.btn-dang-nhap:hover {
+			cursor: pointer;
+		}
+		.form-top-menu {
+			color: #fff;
+			font-size: 16px;
+			text-align: center;
+			font-weight: 700;
+			display: flex;        
+			justify-content: center;
+		}
+		
+		.menu-li {
+			width: 230px;
+			height: 33px;
+		} 
+		.menu-li:hover {
+			background: #F1514F;
+			cursor: pointer;
+		}
+		.menu-li:hover {
+			background: #F1514F;
+			cursor: pointer;
+		}
+		.menu-li-span {
+			width: 100%;
+			display: inline;
+			text-align: center;
+		}
+		.div-while {
+			width: 100%;
+			height: 4px;
+			left: 0;
+			bottom: 0;
+			background-color: #fff;
+			position: absolute;
+		}
+		
+		.form-body {
+			width: 100%;
+			height: 375px;
+		}
+		
+		.form-body-selection {
+			width: 100%;
+			height: 136px;
+			display: flex;
+			justify-content: center;
+		}
+		
+		.selection-a a {
+			width: 102px;
+			height: 91.09px;
+		}
+		.selection-a {
+			width: 134px;
+			height: 123.09px;
+			padding-top: 16px;
+			text-align: center;
+		}
+		.selection-a span{
+			color: #000000;
+		}
+		.selection-a img {
+			width: 44px;
+			height: 44px;
+			margin-bottom: 10px;
+		}
+		
+		.selection-a a {
+			text-decoration: none;
+		}
+		 
+		.form-body-introduce {
+			height: 238.28px;
+			display: flex;  
+			justify-content: center;
+			text-align: center;
+			padding: 24px;
+		}
+		
+		.form-body-introduce a {
+			width: 370px;
+			height: 190px;
+			display: flex;
+		}  
+		
+		.form-body-introduce a:nth-child(2) {
+			width: 590px;
+			height: 190px;
+			display: flex;
+		}
+		.form-body-introduce img:first-child {
+			width: 375px;
+		}
+		#form-body-introduce-a img {
+			width: 588px;
+			height: 190px;
+		}
+		
+		.form-body-flash-sale {
+			width: 100%;
+			height: 400px;
+			background-color: #F2F3F4;
+			padding-top: 24px;
+			display: flex;
+			justify-content: center;
+		}
+		
+		.form-flash-sale {
+			max-width: 1330px;
+			height: 298px;
+			border-radius: 8px;
+			background-color: #FFFFFF;
+		} 
+		
+		.form-flash-sale-top {
+			height: 68px;
+		}
+		
+		.form-flash-sale-body {
+			height: 215px;
+			display: flex;
+		}
+		
+		.form-title-flash-sale {
+			padding: 20px 16px 16px;
+			display: flex;
+		}
+		.form-title-flash-sale img{
+			width: 28px;
+			height: 28px;
+			display: flex;
+		}
+		
+		.form-title-flash-sale input {
+			width: 25px;
+			height: 25px;
+			margin-right: 5px;
+			margin-left: 5px;
+			color: #FFFFFF;
+			background: black;
+			border-radius: 3px;
+		}
+		.form-title-flash-sale b {
+			color: #0F62FE;
+			font-size: 20px;
+			color: black;
+		}
+		.form-title-flash-sale a {
+			text-decoration: none;
+			font-size: 14px;
+			margin-left: 910px;
+		}
+		.form-flash-sale-body .form-flash-sale-xahang {
+			width: 158px;
+			height: 210px;
+			border-radius: 5px;
+			margin-left: 20px;
+			border: 2px solid #FAFAFA;
+			box-sizing: border-box;
+		}
+		.form-flash-sale-body .form-flash-sale-xahang:hover {
+			box-shadow: 0px 0px 14px 10px #F2F3F4;
+		}
+		.form-flash-sale-xahang {
+			width: 145px;
+			height: 143px;
+		}
+		
+		.img {
+			width: 154px;
+			border-top-left-radius: 4px;
+			border-top-right-radius: 4px;
+		}
+		.xahang {
+			width: 70px;
+			position: relative;
+			bottom: 10px;
+			border-radius: 4px;
+		}
+		
+		.arrow-left {
+			width: 40px;
+			height: 40px;
+			background: #8f8f99;
+			border-radius: 4px;
+			position: relative;
+			bottom: 135px;
+			right: 15px;
+		}
+		.arrow-left:hover, .arrow-right:hover, .form-flash-sale-xahang:hover {
+			cursor: pointer;
+		}
+		.arrow-right {
+			width: 40px;
+			height: 40px;
+			background: #8f8f99;
+			border-radius: 4px;
+			position: relative;
+			bottom: 177px;
+			float: right;
+			left: 15px;
+		}
+		.arrow-right img {
+			width: 65%;
+			margin-left: 9px;
+			margin-top: 6px;
+		}
+		.arrow-left img {
+			width: 100%;
+		}
+		
+		.real-price {
+			color: red;
+			font-weight: bold;
+			margin-bottom: 5px;
+			margin-left: 10px;
+		}
+		.fake-price {
+			color: red;
+			margin-left: 10px;
+		}
+		.fake-price span {
+			color: black;
+			text-decoration: line-through;
+		}
+		.form-footer {
+			width: 100%;
+			height: 86px;
+		}
+	
+	</style>
+</head>
+<boby>
+	<div class="container">
+		<div class="form-content">
+			<div class="form-top">
+				<div class="form-top-title">
+					<div>
+						<a href="#">Tải ứng dụng</a>
+						<a href="#">Chăm sóc khách hàng</a>
+						<a href="#">Kiểm tra đơn hàng</a>
+					</div>
+				</div>
+				<div class="form-top-search">
+					<img src="image\logo-sendo.jpg" alt="logo-sendo"/>
+					<div class="form-icon-menu">
+						<img src="image\icon-menu.png" alt="icon-menu"/>
+					</div>
+					<div class="form-text-search">
+						<input type="text" placeholder="Tìm kiếm trên Sendo..."/>
+					</div>
+					<div class="form-text-search">
+						<button><img src="image\icon-search.png" alt="icon-search"/></button>
+					</div>
+					<div class="icon-bag"><img src="image\icon-shopping-bag.png" alt="icon-bag"/></div>
+					<button class="btn-dang-nhap">Đăng nhập</button>
+				</div>
+				<ul class="form-top-menu">
+					<li class="menu-li">
+						<span class"menu-li-span">Cho bạn</span>
+						<div class="div-while"></div> 
+					</li>
+					<li class="menu-li">
+						<span class"menu-li-span">Đồ dùng nhà bếp</span>
+						<div class="div-while"></div>
+					</li>
+					<li class="menu-li">
+						<span class"menu-li-span">Đầm, váy</span>
+						<div class="div-while"></div>
+					</li>
+					<li class="menu-li">
+						<span class"menu-li-span">Áo nữ</span>
+						<div class="div-while"></div>
+					</li>
+					<li class="menu-li">
+						<span class"menu-li-span">Dụng cụ làm vườn</span>
+						<div class="div-while"></div>
+					</li>
+					<li class="menu-li">
+						<span class"menu-li-span">Phụ tùng xe máy</span>
+						<div class="div-while"></div>
+					</li>
+				</ul>
+			</div>
+				
+			<div class="form-body">
+				<div class="form-body-selection">
+					<div class="selection-a">
+						<a href="#">
+							<img src="image\icon-vegetable.png" alt="Sendo Farm"><br/>
+							<span>Rau củ quả <br/>Sendo Farm</span>
+						</a>
+					</div>
+					<div class="selection-a">
+						<a href="#">
+							<img src="image\icon-sale.png" alt="Săn sale"><br/>
+							<span>Săn Sale Shop+</span>
+						</a>
+					</div>
+					<div class="selection-a">
+						<a href="#">
+							<img src="image\icon-shop-near.png" alt="Gần bạn"><br/>
+							<span>Shop gần bạn</span>
+						</a>
+					</div>
+					<div class="selection-a">
+						<a href="#">
+							<img src="image\icon-sieuthi-dientu.png" alt="Gần bạn"><br/>
+							<span>Siêu thị điện tử</span>
+						</a>
+					</div>
+					<div class="selection-a">
+						<a href="#">
+							<img src="image\icon-thoi-trang-lamdep.png" alt="Gần bạn"><br/>
+							<span>Thời trang làm đẹp</span>
+						</a>
+					</div>
+					<div class="selection-a">
+						<a href="#">
+							<img src="image\icon-vietjet.png" alt="Gần bạn"><br/>
+							<span>Vietjet 99K</span>
+						</a>
+					</div>
+					<div class="selection-a">
+						<a href="#">
+							<img src="image\icon-the-game.png" alt="Gần bạn"><br/>
+							<span>Thẻ game -5.5%</span>
+						</a>
+						
+					</div>
+					<div class="selection-a">
+						<a href="#">
+							<img src="image\icon-vietlott.png" alt="Gần bạn"><br/>
+							<span>Nạp thẻ &amp;<br/>Vietlott</span>
+						</a>
+					</div>
+					<div class="selection-a">
+						<a href="#">
+							<img src="image\icon-bachhoa-giadung.png" alt="Gần bạn"><br/>
+							<span>Bách hóa <br/>Gia dụng</span>
+						</a>
+					</div>
+					<div class="selection-a">
+						<a href="#">
+							<img src="image\icon-voucher.png" alt="Gần bạn"><br/>
+							<span>Voucher &amp;<br/>Mã Freeship</span>
+						</a>
+					</div>
+				</div>
+				<div class="form-body-introduce">
+					<a href="#"><img src="image\img-deal-day.jpg" alt="Deal sốc"><br/></a>
+					<a href="#" id="form-body-introduce-a"><img src="image\img-sale.jpg" alt="Deal sốc"><br/></a>
+					<a href="#"><img src="image\img-dien-tu.jpg" alt="Deal sốc"><br/></a>
+				</div>
+			</div>
+			<div class="form-body-flash-sale">
+				<div class="form-flash-sale">
+					<div class="form-flash-sale-top">
+						<div class="form-title-flash-sale">
+							<img src="image\flash-sale.png" alt="flashsale"/>
+							<b>FLASH SALE</b>
+							<input type="text" placeholder="00"/>:
+							<input type="text" placeholder="34"/>:
+							<input type="text" placeholder="34"/>
+							<a href="#">Xem tất cả</a>
+						</div>
+						
+					</div>
+					<div class="form-flash-sale-body">
+						<div class="form-flash-sale-xahang">
+							<img class="img" src="image\img1.jpg" alt="img"/>
+							<img class="xahang" src="image\xahang.png" alt="xahang"/>
+							<div class="real-price">119.000đ</div>
+							<div class="fake-price"><span>179.000đ</span> -34%</div>
+						</div>
+						<div class="form-flash-sale-xahang">
+							<img class="img" src="image\img2.jpg" alt="img"/>
+							<img class="xahang" src="image\xahang.png" alt="xahang"/>
+							<div class="real-price">205.000đ</div>
+							<div class="fake-price"><span>219.000đ</span> -20%</div>
+						</div>
+						<div class="form-flash-sale-xahang">
+							<img class="img" src="image\img3.jpg" alt="img"/>
+							<img class="xahang" src="image\xahang.png" alt="xahang"/>
+							<div class="real-price">139.000đ</div>
+							<div class="fake-price"><span>279.000đ</span> -34%</div>
+						</div>
+						<div class="form-flash-sale-xahang">
+							<img class="img" src="image\img4.jpg" alt="img"/>
+							<img class="xahang" src="image\xahang.png" alt="xahang"/>
+							<div class="real-price">69.000đ</div>
+							<div class="fake-price"><span>79.000đ</span> -14%</div>
+						</div>
+						<div class="form-flash-sale-xahang">
+							<img class="img" src="image\img5.jpg" alt="img"/>
+							<img class="xahang" src="image\xahang.png" alt="xahang"/>
+							<div class="real-price">231.000đ</div>
+							<div class="fake-price"><span>250.000đ</span> -5%</div>
+						</div>
+						<div class="form-flash-sale-xahang">
+							<img class="img" src="image\img6.jpg" alt="img"/>
+							<img class="xahang" src="image\xahang.png" alt="xahang"/>
+							<div class="real-price">109.000đ</div>
+							<div class="fake-price"><span>59.000đ</span> -15%</div>
+						</div>
+						<div class="form-flash-sale-xahang">
+							<img class="img" src="image\img7.jpg" alt="img"/>
+							<img class="xahang" src="image\xahang.png" alt="xahang"/>
+							<div class="real-price">84.000đ</div>
+							<div class="fake-price"><span>99.000đ</span> -10%</div>
+						</div>
+						
+					</div>
+					<div class="arrow-left"><img src="image\arrow-icon.png" alt="arrow"/></div>
+					<div class="arrow-right"><img src="image\right-arrow.png" alt="arrow"/></div>
+					
+				</div>
+			</div>
+			
+			<div class="form-footer">
+				<p><b>TOP TÌM KIẾM</b></p>
+				<a href="#">Đồng Hồ</a>
+				<a href="#">Shopping Mail</a>
+				<a href="#">Thế Giới Di Động</a>
+				<a href="#">Bánh Trung Thu Kinh Đô</a>
+				<a href="#">Black Friday</a>
+				<a href="#">Tivi</a>
+				<a href="#">Mỹ phẩm Hàn Quốc</a>
+			</div>
+		</div>
+	</div>
+</body>
+</html>

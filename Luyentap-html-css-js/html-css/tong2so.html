@@ -1,0 +1,71 @@
+<!DOCTYPE html>
+<html>
+    <head>
+        <meta charset="utf-8">
+    </head>
+    <body>
+        <h1>Tính tổng 2 số javascript</h1>
+		<h3>Sum 1</h3>
+        <input type="text" id="num1" value="0"/>
+        <input type="text" id="num2" value="0"/> <br/>
+        <span id="result"></span> <br/>
+        <input type="button" onclick="sum()" value="Tính tổng"/> <br/><br/>
+		
+		<h3>Sum 2 - đầy đủ điều kiện</h3>
+		<input type="text" id="numa" value="0"/>
+        <input type="text" id="numb" value="0"/> <br/>
+        <span id="result2"></span> <br/>
+        <input type="button" onclick="sum2()" value="Tính tổng"/>
+		
+        <script>
+			//Cách 1:
+            function sum(){
+                let a = Number(document.getElementById("num1").value);
+                let b = Number(document.getElementById("num2").value);
+
+                let sum = parseInt(a) + b;
+
+                document.getElementById('result').innerHTML = sum;
+            }
+			//Cách 2: đầy đủ trường hợp
+			function sum2(){
+				let a = document.getElementById("numa").value;
+				let b = document.getElementById("numb").value;
+			 
+				// Kiểm tra dữ liệu
+				if (a == "" || b == ""){
+					alert("Vui lòng nhập vào hai số");
+					return false;
+				}
+			 
+				// Ép kiểu dữ liệu
+				a = Number(a);
+				b = Number(b);
+			 
+				if (isNaN(a) || isNaN(b)){
+					alert("Bạn phải nhập vào hai số");
+					return false;
+				}
+			 
+				let sum2 = parseInt(a) + b;
+			 
+				document.getElementById('result2').innerHTML = sum2;
+			}
+			//Cách 3: 
+			function sum(a, b){
+				try{
+					a = Number(a);
+					b = Number(b);
+					if (isNaN(a) || isNaN(b)){
+						throw new Error('Dữ liệu bạn nhập vào không phải là số');
+					}
+					return a + b;
+				}
+				catch (e){
+					console.log(e.message);
+					return false;
+				}
+			}
+        </script>
+    </body>
+</html>

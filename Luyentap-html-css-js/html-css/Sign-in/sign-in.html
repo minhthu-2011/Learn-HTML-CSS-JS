@@ -1,0 +1,175 @@
+<!DOCTYPE>
+<html>
+<head>
+	<title>Sign In</title>
+	<style>
+		.container {
+			width: 100%;
+			height: 100%;
+			background: #F8F8F8;
+			position: fixed;
+			top: 0px;
+			left: 0px;
+		}
+		.form-content {
+			width: 1000px;
+			height: 700px;
+			background: #FFFFFF;
+			margin: auto;
+			margin-top: 3%;
+			border-radius: 25px;
+		}
+		.form-space {
+			height: 50px;
+		}
+		
+		.form-detail {
+			width: 800px;
+			height: 80%;
+			margin: auto;
+			margin-top: 24px;
+		}
+		
+		.form-left {
+			width: 50%;
+			height: 100%;
+			float: left;
+		}
+		
+		.form-image img {
+			width: 350px;
+			height: 400px;
+			margin: auto;
+			margin-left: 20px;
+			margin-top: 30px;
+		}
+		.form-left-link a {
+			color: #494545;
+			word-spacing: 2px;   <!--Khoang trang giua cac tu trong van ban-->
+		}
+		.form-left-link {
+			text-align: center;
+			margin-top: 85px;
+			font-size: 20px;
+		}
+		
+		.form-right {
+			width: 50%;
+			height: 100%;
+			float: right;
+		}
+		.form-input-header {
+			font-size: 30px;
+		}
+		.form-input-body div {
+			width: 100%;
+			height: 50px;
+			margin-bottom: 20px;
+			border-bottom: 2px solid #ccc;
+		}
+		.form-input-body input {
+			width: 70%;
+			height: 50px;
+			border: none;
+			outline: none; 
+			font-size: 15px;
+			background-color:transparent;
+		}
+		
+		.form-input-checkbox {  
+			margin-top: 30px;
+			width: 130px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.form-input-checkbox label {
+			font-size: 16px;
+			margin-left: 10px;
+			color: #494545;
+		}
+		.form-input-checkbox input {
+			width: 18px;
+			height: 18px;
+		}
+		.form-input-body img {
+			width: 15px;
+			height: 15px;
+			margin-right: 10px;
+		}
+		.form-right-button button{
+			width: 125px;
+			height: 55px;
+			background: #6DABE4;
+			color: #fff;
+			border-radius: 6px;
+			border: none;
+			font-size: 15px;
+			margin-top: 50px;
+		}
+		.form-right-button button:hover{
+			cursor: pointer;
+		}
+		.form-right-img {
+			margin-top: 60px;
+			font-size: 18px;
+			width: 250px;
+			display: flex;
+			justify-content: space-between;
+			align-items: center;
+		}
+		.form-right-img img {
+			width: 35px;
+			height: 35px;
+		}
+		.form-right-img img:hover {
+			cursor: pointer;
+		}
+	</style>
+</head>
+<boby>
+<div class="container"> 
+	<div class="form-content"> 
+		<div class="form-space"></div>
+		<div class="form-detail">
+			<div class="form-left"> 
+				<div class="form-image"> 
+					<img src="image/260450442_1082062392626457_8366671070729135675_n.jpg"/>
+				</div>
+				<div class="form-left-link"> 
+					<a href="#">Create an account</a>
+				</div>
+			</div>
+			
+			<div class="form-right"> 
+				<div class="form-input-header">
+					<h1> Sign in </h1>
+				</div>
+				<form class="form-input-body">
+					<div class="form-input-user">
+						<img src="image/user.png" alt="user"/>
+						<input type="text" placeholder="Your Name"/> 
+					</div>
+					<div class="form-input-pass">
+						<img src="image/pass-black.png" alt="password"/>
+						<input type="password" placeholder="Password"/> 
+					</div>
+				</form>
+				<form class="form-input-checkbox">
+					<input type="checkbox" id="checkbox"/>
+					<label for="checkbox">Remember me</label>
+				</form>
+				<form class="form-right-button"> 
+					<button>Log in</button>
+				</form>
+				<div class="form-right-img"> Or login with
+					<img src="image/facebook.png" alt="facebook"/>
+					<img src="image/twitter.png" alt="twitter"/>
+					<img src="image/google.png" alt="google"/>
+				</div>
+			</div>
+		</div>
+	</div>
+</div>
+</body>
+</html>

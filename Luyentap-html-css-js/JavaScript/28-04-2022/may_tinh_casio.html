@@ -1,0 +1,407 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Máy tính Casio</title>
+    <style>
+        body {
+            font-family: Roboto;
+            background:  #EEEEEE;
+        }
+        #calculator {
+            width: 321px;
+            height: 460px;
+            background-color: #444444;
+            top: 20px;
+            margin: 0 auto;
+            position: relative;
+            border-radius: 20px;
+        }
+        #calculator_result {
+            height: 150px;
+            color: #EEEEEE;
+        }
+        .three_dots{
+            height: 30px;
+            width: 70px;
+            display: inline-block;
+            margin-left: 15px;
+            margin-top: 5px;
+        }
+        button.blue_1 {
+            height: 20px;
+            width: 20px;
+            vertical-align: sub;
+            background-color: #477fe7;
+            border: none;
+            border-radius: 10px;
+            margin-top: 5px;
+        }
+        button.red_2 {
+            height: 20px;
+            width: 20px;
+            vertical-align: sub;
+            background-color: #ca483e;
+            border: none;
+            border-radius: 10px;
+        }
+
+        button.green_3 {
+            height: 20px;
+            width: 20px;
+            vertical-align: sub;
+            background-color: #39ca39;
+            border: none;
+            border-radius: 10px;
+        }
+        #old_results{
+            text-align: right;
+            height:20px;
+            margin:0 20px;
+            padding-top:20px;
+            font-size:15px;
+            color:#919191;
+        }
+        #output_results {
+            text-align: right;
+            height: 60px;
+            margin: 10px 20px;
+            font-size: 35px;
+        }
+        #calculator_keyboard {
+            width: 321px;
+            height: 310px;
+        }
+        .operator, .numbers, .dots {
+            width:24.06%;
+            height:61px;
+            border: none; 
+            font-size:28px;
+            margin-top: 1px;
+        }
+        
+        .numbers, .dots {
+            background-color: #888888;   
+        }
+
+        .operator, .numbers, .dots {
+            cursor: pointer;
+        }
+
+        button {
+            color: #EEEEEE;
+        }
+
+        button#delete_all {
+            background-color: #666666;
+        }
+
+        button#change_sign {
+            background-color: #666666;
+        }
+
+        button#percent {
+            background-color: #666666;
+        }
+
+        button:nth-child(4) {
+            background-color: #DAA520;
+        }
+
+        button:nth-child(8) {
+            background-color: #DAA520;
+        }
+        button:nth-child(12) {
+            background-color: #DAA520;
+        }
+
+        button:nth-child(16) {
+            background-color: #DAA520;
+        }
+
+        button:nth-child(17) {
+            width: 158.4px;
+            border-bottom-left-radius: 20px;
+        }
+
+        button:nth-child(19) {
+            background-color: #DAA520;
+            border-bottom-right-radius: 20px;   
+        }
+
+    </style>
+</head>
+<body>
+    <div id="calculator">
+		<div id="calculator_result">
+			<div class="three_dots">
+				<button class="blue_1"></button>
+                <button class="red_2"></button>
+                <button class="green_3"></button>
+			</div>
+			<div id="old_results">
+				<p id="old_results"></p>
+			</div>
+            
+			<div id="output_results">
+				<p id="export_value">0</p>
+			</div>
+		</div>
+		<div id="calculator_keyboard">
+			<button class="operator" id="delete_all" onclick="DelAll()">C</button>
+			<button class="operator" id="change_sign" onclick="GetCalCustom('+/-')">+/-</button>
+			<button class="operator" id="percent">%</button>
+			<button class="operator" id="/" onclick="GetCal('÷') ">÷</button>
+
+			<button class="numbers" id="7" onclick="GetNumber('7')">7</button>
+			<button class="numbers" id="8" onclick="GetNumber('8')">8</button>
+			<button class="numbers" id="9" onclick="GetNumber('9')">9</button>
+
+			<button class="operator" id="*" onclick="GetCal('x') ">×</button>
+
+			<button class="numbers" id="4" onclick="GetNumber('4')">4</button>
+			<button class="numbers" id="5" onclick="GetNumber('5')">5</button>
+			<button class="numbers" id="6" onclick="GetNumber('6')">6</button>
+
+			<button class="operator" id="-"  onclick="GetCal('-') ">-</button>
+
+			<button class="numbers" id="1" onclick="GetNumber('1')">1</button>
+			<button class="numbers" id="2" onclick="GetNumber('2')">2</button>
+			<button class="numbers" id="3" onclick="GetNumber('3')">3</button>
+
+			<button class="operator" id="+" onclick="GetCal('+') ">+</button>
+            
+			<button class="numbers" id="0" onclick="GetNumber('0')">0</button>
+			<button class="dots" id="dots" onclick="GetNumber('.')">.</button>
+			<button class="operator" id="=" onclick="GetResult()">=</button>
+		</div>
+	</div>
+    <div>
+        <p id="result_All"></p>
+    </div>
+    <script>
+        var checkPhepTinh = false;
+        var checkFirstClick= true;
+        var LastCal = "+";
+        var checkLastCalEnd = false;
+        function Take_old_value() {
+            return document.getElementById('old_results').innerText;
+        }
+        function Print_old_value(numb) {
+            document.getElementById('old_results').innerText = numb ;
+        }
+
+        function Get_results() {
+            return document.getElementById('export_value').innerText;
+        }
+        function Print_results(numb) {
+            document.getElementById('export_value').innerText = numb;
+        }
+
+
+        function Print_results_All(str) {
+            document.getElementById('result_All').innerText = " = " + str;
+        }
+        //chuyen doi so thanh chuoi
+        function String_format(numb) {
+            var n = Number(numb);
+            var value = n.toLocaleString("en");
+            return value;
+        }
+
+        //Dao nguoc chuoi thanh so
+        function Remove_string_format(numb) {
+            return Number(numb.replace(/,/g, '')); // Tìm kiếm dấu "," trong chuỗi và thay thế bằng chuỗi rỗng
+        }
+
+        function GetCalCustom(formCal){
+            GetResult()
+            switch(formCal){
+                case "+/-":
+                    var temp1 = document.getElementById('export_value').innerText.toString().trim();
+                    Print_results((-1) * temp1);
+                    break;
+            }
+            
+        }
+
+
+
+        function GetCal(formCal){
+            var LastResult = 0;
+            var flagCheckLast = false;
+            if(checkLastCalEnd){// // check xem neu da tinh toan xong thi lan an vao nut number se la lan moi, con nut tinh thì tính tiếp
+                LastResult = Number(document.getElementById('export_value').innerText.toString().trim());
+                flagCheckLast = true;
+                DelAll();
+            }
+            if(!checkFirstClick){
+                var temp1 = document.getElementById('old_results').innerText.toString().trim();
+                var temp2 = document.getElementById('export_value').innerText.toString().trim();
+                
+                if(temp1 == ""){
+                    if(flagCheckLast){
+                        temp1 = LastResult + formCal;
+                    }
+                    else{
+                        temp1 = temp2 + formCal;
+                    }
+                }
+                else{
+                    temp1 = temp1 + temp2 + formCal;
+                }
+                
+                Print_old_value(temp1);
+                checkPhepTinh = true;
+            }
+            Print_results(0);
+
+        }
+
+        function GetNumber(num){
+            if(checkLastCalEnd){ // check xem neu da tinh toan xong thi lan an vao nut number se la lan moi, con nut tinh thì tính tiếp
+                DelAll()
+            }
+            var newNum = "";
+            if(checkPhepTinh){
+                checkPhepTinh = false;
+                newNum = num;
+            }
+            else{
+                newNum = document.getElementById('export_value').innerText;
+                newNum += num;
+            }
+            var FinalNum ;
+            if(newNum.length >= 4){
+                FinalNum = Remove_string_format(newNum);
+            }
+            else{
+                FinalNum = newNum;
+            }
+            Print_results(FinalNum);
+            
+            checkFirstClick = false;
+        }
+
+
+       function GetResultAll(){
+            var Result1 = "";
+            var Result2 = 0 ;
+            var Sum = 0 ;
+            var checkCal = "";
+            var flagSum = 0 ;
+            var temp1 = document.getElementById('old_results').innerText.toString().trim();
+            if(temp1 == ""){
+                Print_results(Sum);
+                return;
+            }
+            GetCal(LastCal);
+            var temp1 = document.getElementById('old_results').innerText.toString().trim();
+
+            while(temp1.search(',') >= 0){
+                temp1 = temp1.replace(',' , '');
+            }
+            console.log(temp1);
+            
+            for(i = 0 ; i < temp1.length; i ++){
+                if(temp1[i] <= '9' && temp1[i] >= '0'){
+                    Result1 += temp1[i];
+                }
+                else{
+                    checkCal = temp1[i].toString();
+                    flagSum = i;
+                   // console.log(checkCal)
+                    //console.log(flagSum)
+                    break;
+                }
+            }
+            Sum = Number(Result1);
+            console.log(Sum)
+
+            Result1 = "";
+            
+            for(i = flagSum + 1 ; i < temp1.length; i ++){
+                if(temp1[i] <= '9' && temp1[i] >= '0'){
+                    Result1 += temp1[i];
+                }
+                else{
+                   
+                    Result2 = Number(Result1);
+                    Result1 = "";
+                    Sum = Rutgon(checkCal, Sum, Result2);
+                    checkCal = temp1[i];
+                    console.log(Sum)
+                }
+            }
+            if(temp1[temp1.length - 1] <= '9' && temp1[temp1.length - 1] >= '0'){
+                Sum = Rutgon(checkCal, Sum, Result2);
+                console.log(Sum)
+            }
+            else{
+                var Fix = document.getElementById('old_results').innerText.toString().trim();
+
+                Print_old_value(Fix.slice(0, Fix.length - 1));
+            }
+
+            Print_results(Sum);
+            checkLastCalEnd = true;
+
+       }
+
+       function Rutgon(checkCal, Sum, Result2) {
+            switch(checkCal){
+                case '+':
+                    Sum += Result2;
+                    break;
+                case '-':
+                    Sum -= Result2;
+                    break;
+                case 'x':
+                    Sum *= Result2;
+                    break;
+                case '÷':
+                    Sum /= Result2;
+                    break;
+            }
+            return Sum;
+        }
+
+        var dots = document.getElementsByClassName('dots');
+        for(var i = 0; i < dots.length; i ++) {
+            dots[i].addEventListener('click', function() {
+                var result = Remove_string_format(Get_results());
+                if(result != NaN) {
+                    result = result + this.id;
+                    Print_results(result);
+                }
+            });
+        }
+
+        //khắc phục nhập số đầu tiên bị số 0 ở đầu
+        function Print_results(numb) {
+            if(numb == "") {
+                document.getElementById('export_value').innerText = numb;
+            } else {
+                document.getElementById('export_value').innerText = String_format(numb);
+            }
+        }
+        function DelAll(){
+            checkPhepTinh = false;
+            checkFirstClick = false;
+            checkLastCalEnd = false;
+            Print_results("0");
+            Print_old_value("");
+        }
+       
+        function GetResult(){
+            if(!checkLastCalEnd){
+                GetResultAll();
+
+            }
+        }
+
+    </script>
+</body>
+</html>

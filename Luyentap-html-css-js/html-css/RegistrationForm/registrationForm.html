@@ -1,0 +1,76 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <link rel="stylesheet" href="registrationForm.css">
+    <title>Registration Form</title>
+</head>
+<body>
+    <div class="page-wrapper"> 
+		<div class="wrapper">
+			<div class="card-body">
+				<h2 class="title">Registration Form</h2>
+				<form method="POST">
+					<div> 
+						<div class="form-field">
+							<lable class="label">First Name</lable> <br/>
+							<input class="input-style" type="text" name="first_name">
+						</div>
+						<div class="form-field">
+							<lable class="label">Last Name</lable> <br/>
+							<input class="input-style" type="text" name="last_name">
+						</div>
+					</div>
+					<div>
+						<div class="form-field">
+							<lable class="label">Birthday</lable> <br/>
+							<input class="input-style" type="text" name="birthday">
+							<i class="input-icon"></i>
+						</div>
+						<div class="form-field">
+							<lable class="label">Gender</lable> <br/>
+							<div> 
+								<label class="radio">Male
+									<input type="radio" checked="checked" name="gender">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+							<div> 
+								<label class="radio">Female
+									<input type="radio" checked="checked" name="female">
+									<span class="checkmark"></span>
+								</label>
+							</div>
+						</div>
+					</div>
+					<div>
+						<div class="form-field">
+							<lable class="label">Email</lable> <br/>
+							<input class="input-style" type="text" name="email">
+						</div>
+						<div class="form-field">
+							<lable class="label">Phone Number</lable> <br/>
+							<input class="input-style" type="text" name="phone_number">
+						</div>
+					</div>
+					<div class="form-field">
+						<lable class="label">Subject</lable> <br/>
+						<div class="select">
+							<select name="subject">
+								<option class="option">Choose option</option>
+								<option>Subject 1</option>
+								<option>Subject 2</option>
+								<option>Subject 3</option>
+								<option>Subject 4</option>
+							</select>
+						</div>
+					</div>
+					<div> 
+						<button class="btn" type="submit">Submit</button>
+					</div>
+				</form>
+			</div>
+		</div>
+	</div>
+    
+</body>
+</html>

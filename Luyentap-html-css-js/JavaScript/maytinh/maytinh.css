@@ -1,0 +1,91 @@
+body {
+	font-family: Roboto;
+	background:  #EEEEEE;
+}
+#may_tinh {
+	width: 321px;
+	height: 430px;
+	background-color: #444444;
+	top: 20px;
+	margin: 0 auto;
+	position: relative;
+	border-radius: 20px;
+}
+#ket_qua {
+	height: 120px;
+	color: #EEEEEE;
+}
+#ket_qua_cu{
+    text-align: right;
+    height:20px;
+    margin:0 20px;
+    padding-top:20px;
+    font-size:15px;
+    color:#919191;
+}
+#xuat_ket_qua {
+	text-align: right;
+	height: 60px;
+	margin: 10px 20px;
+	font-size: 30px;
+}
+#ban_phim {
+	width: 321px;
+	height: 400px;
+}
+.he_thong, .con_so, .cham {
+	width:24.06%;
+	height:61px;
+	border: none; 
+	font-size:28px;
+	margin-top: 1px;
+}
+ 
+.con_so, .cham {
+	background-color: #888888;   
+}
+
+.he_thong, .con_so, .cham {
+	cursor: pointer;
+}
+
+button {
+	color: #EEEEEE;
+}
+
+button:nth-child(1) {
+	background-color: #666666;
+}
+
+button:nth-child(2) {
+	background-color: #666666;
+}
+
+button:nth-child(3) {
+	background-color: #666666;
+}
+
+button:nth-child(4) {
+	background-color: #DAA520;
+}
+
+button:nth-child(8) {
+	background-color: #DAA520;
+}
+button:nth-child(12) {
+	background-color: #DAA520;
+}
+
+button:nth-child(16) {
+	background-color: #DAA520;
+}
+
+button:nth-child(17) {
+	width: 158.4px;
+	border-bottom-left-radius: 20px;
+}
+
+button:nth-child(19) {
+	background-color: #DAA520;
+	border-bottom-right-radius: 20px;   
+}

@@ -1,0 +1,331 @@
+Vòng lặp while
+//Tính tổng các số chẵn/ lẻ 0-n
+function tinhTong(n) {
+	var S = 0;
+	var s = 0;
+	var i = 0;
+	while (i <= n) {
+		if (i % 2 == 0) {
+			S = S + i; // S += i;
+		}
+		if (i % 2 != 0) {
+			s = s + i; // s += i;
+		}
+		i++;
+	}
+	console.log(S);
+	console.log(s);
+}
+tinhTong(10);
+
+// Nhap n tu nguoi dung
+function tinhTong(n)
+{
+    var S = 0;
+    var i = 0;
+ 
+    while (i <= n)
+    {      
+        // Nếu số chẵn thì cộng vào
+        if (i % 2 == 0){
+            S += i; 
+        }
+ 
+        // tăng biến đếm
+        i++;
+    }
+    return tong;
+}
+ 
+var n = parseInt(prompt("Nhập số cần kiểm tra"));
+document.write("Tổng số chẵn từ 1 tới " + n + " là: " + tinhTong(n));
+
+Bài 1: Cho 1 mảng gồm 10 phần tử, tìm phần tử lớn nhất trong mảng
+	b1: cho 1 giá trị lớn nhất mặc định là phần tử đầu tiên của mảng 
+		max = A[0]
+	b2: so sánh  từng số trong mảng với giá trị đầu tiên
+		nếu A[0] < A[i] -> max = A[i]
+	b3: sau khi đã so sánh hết 1 vòng các phần tử trong mảng
+		-> max
+
+let A = [5, 4, 6, 7, 11, 3, 9, 8, 0, 2];
+let max = A[0];
+for (var i = 0; i < A.length; i ++) {
+	if(max < A[i]) {
+		max = A[i];
+	} 
+}
+console.log("So lon nhat trong mang la: ", max); 
+
+Bài 2: Cho 1 mảng gồm 10 phần tử, tìm phần tử nhỏ thứ 3 trong mảng
+	b1: Sắp xếp mảng theo thứ tự tăng dần
+	b2: in ra mảng sau khi đã sắp xếp
+	b3: phần tử nhỏ thứ 3 trong mảng sẽ là A[2]
+		in ra A[2]
+	
+let A = [5, 4, 6, 7, 11, 3, 9, 8, 0, 2];
+A.sort(function(a, b) {
+	return a - b;  //Khi a-b<0 la true -> a dung truoc b
+});
+console.log(A);
+console.log(A[2]);
+
+Bài 3: Cho 1 mảng gồm 10 phần tử, tìm tổng và trung bình công của các phần tử
+	b1: gán sum = 0
+	b2: dùng vòng lặp for cộng lần lượt từng ptu trong mảng với nhau
+	b3: in ra sum và sum/A.length
+
+let A = [5, 4, 6, 7, 11, 3, 9, 8, 0, 2];
+var sum = 0;
+for(var i = 0; i < A.length; i++) {
+	sum = sum + A[i];
+}
+console.log(sum);
+console.log(sum/A.length);
+
+Bài 4: Cho 1 mảng gồm 10 phần tử, tìm tất cả các số nguyên tố có trong mảng
+	b1: kiểm tra lần lượt từng số trong mảng for: j = 0; j < N.length ; j ++
+	b2: Xét từng số trong mảng xem có phải SNT không
+	b3: Nếu là số nguyên tố thì in ptu đó ra
+
+let N = [5, 4, 6, 7, 11, 3, 9, 8, 0, 2];
+for (var j = 0; j < N.length; j ++) {
+	var n = 0;
+	var i = 0;
+	while(i <= N[j]) {
+		a = N[j] % i;
+		if (a==0){
+			n = n + 1;
+		}
+		i++;
+	} 
+	
+	if (n == 2) {
+		console.log(N[j]);
+	}
+} 
+
+Bài 5: Cho 1 mảng gồm 10 phần tử, kiểm tra xem mảng có đối xứng không? 
+	   vd: 1,2,3,3,2,1 -> đối xứng
+// cách  1:
+	b1: chia mảng A gồm 10 phần tử thành 2 mảng có số phần tử bằng nhau
+		A = [1, 2, 3, 4, 5, 5, 4, 3, 2, 1]  
+		split_list_in_n(a, 2);
+		mảng B = [12345] , C = [54321]
+	b2: nếu B[0] == C[4] && B[1] == C[3] && 
+		    B[2] == C[2] && B[3] == C[1] && B[4] == C[0]
+		-> hàm đối xứng
+
+let A = [1, 2, 3, 4, 5, 5, 4, 3, 2, 1];
+let B = [A.length/2];
+let C = [A.length/2];
+for(var i = 0; i < A.length; i ++) {
+	if(i < A.length/2) {
+		B = A[i];
+	}
+	else {
+		C = A[i];
+	}
+}
+for (var j = 0; j < B.length; j ++) {
+	for (var v = C.length-1; v > 0; v --) {
+		if(B[j] === C[v]) {
+			document.write("Day la mang doi xung");
+		}
+		else {
+			document.write("Day la mang ko doi xung");
+		}
+	}
+}
+
+// cách 2:
+	b1: cho mảng A = [1, 2, 3, 4, 5, 5, 4, 3, 2, 1]
+	b2: lặp lần lượt từ A[i=0] -> A[i=A.length] 
+	b3: nếu A[0] == A[9] && A[1] == A[8] && A[2] == A[7]
+		    && A[3] == A[6] && A[4] == A[5]
+		-> Ham doi xung
+
+let A = [1, 2, 3, 4, 5, 5, 4, 3, 2, 1];
+for(var i = 0; i <= A.length; i++) {
+	if(A[0] == A[9] && A[1] == A[8] && A[2] == A[7] && A[3] == A[6] && A[4] == A[5]) {
+		console.log("Hàm A = [" + A + "] là hàm đối xứng");
+		break;
+	}
+	else {
+		console.log("Hàm A = [" + A + "] không là hàm đối xứng");
+	}
+}
+
+//Cách 3: suy ra từ cách 2 trâu bò :))
+	b1: sử dụng vòng lặp for chạy từ đầu mảng -> cuối mảng
+		for(var i = 0; i < A.length; i ++)
+	b2: so sánh A[i] và A[A.length-1-i]  
+		nếu A[i] == A[A.length-1-i] -> mảng đối xứng
+		nếu A[i] != A[A.length-1-i] -> mảng ko đối xứng
+
+let A = [1, 2, 3, 4, 5, 5, 4, 3, 2, 1];
+var dem = 0;
+for(var i = 0; i < A.length; i ++) {
+	if(A[i] != A[A.length-1-i]) {
+		dem ++;
+	}
+}
+if(dem == 0) {
+	console.log("Mảng A là mảng đối xứng");
+}
+else {
+	console.log("Mảng A không là mảng đối xứng");
+}
+
+Bài 6: Cho 1 mảng gồm 10 phần tử, thay thế tất cả số âm = 0
+	   b1: xét lần lượt từng phần tử trong mảng
+		  -> for : i = 0; i < A.length; i++
+	   b2: Nếu A[i] < 0 -> A[i] = 0
+
+let A = [-5, 4, -6, 7, -11, 3, -9, 8, 0, 2];
+for (var i = 0; i < A.length; i ++) {
+	if(A[i] < 0) {
+		A[i] = 0;
+	}
+}
+console.log(A);
+
+Bài 7: Cho 1 mảng gồm 10 phần tử, tìm phần tử có số lần xuất hiện nhiều nhất. vd: 1,2,2,3,4 -> là 2 vì có 2 giá trị
+//Cách 1:
+	b1: sử dụng vòng lặp for lọc ra các phần tử xuất hiện nhiều hơn 1 lần
+		cho i = A.length-1; i > 0; i--
+	b2: sắp xếp mảng tăng dần
+	b3: so sánh các phần tử cạnh nhau
+		nếu thấy A[i] = A[i-1] thì tiếp tục đếm -> tăng n -> ++n
+	
+let A = [7, 2, 6, 7, 4, 9, 8, 8, 6, 8];
+//Sắp xếp mảng tăng dần
+A.sort(function(a, b) {
+	return a - b;  
+}); 
+let max = [0,0];
+let n = 1;
+
+for (let i = A.length-1; i > 0; i--) {
+	//Thấy phần tử trùng nhau thì tiếp tục đếm
+	if (A[i] === A[i-1]) { 
+		++n;
+	} 
+	else{
+		//So sánh số lần xuất hiện với max[1] 
+		if (max[1] < n){ 
+			//Nếu tìm thấy phần tử xuất hiện nhiều hơn thì gán phần tử vào max[0]
+			//Và gán số lần xuất hiện vào max[1]
+			max[0] = A[i];
+			max[1] = n;   
+		}
+		n = 1;
+	}
+}
+console.log("Phần tử xuất hiện nhiều nhất là: " + max[0] + " ,xuất hiện " + max[1] + " lần");
+
+Cách 2:
+	b1: tạo ra 1 mảng B chỉ gồm các phần tử khác nhau
+	b2: tạo mảng C lưu giá trị đếm số lần xuất hiện của mỗi phần tử mảng B trong mảng A
+	b3: B[i] tương ứng với giá trị lớn nhất của mảng C chính là phần tử xuất hiện nhiều nhất
+	b4: TH trong mảng có >2 phần tử xuất hiện bằng nhau nhiều nhất:
+		tạo mảng D lưu vị trí các phần tử cùng xuất hiện nhiều nhất
+
+let A = [1, 2, 3, 2, 1, 5, 6, 3, 9, 1];
+var B = [A.length];
+var x = 1;
+B[0] = A[0];
+
+//tao mang chi gom cac phan tu khac nhau
+for (var i = 1; i < A.length; i++) {
+  var dem = 0;
+  for (var j = 0; j < x; j++) {
+    if (A[i] === B[j]) {
+      dem++;
+    }
+    if (dem === 0) {
+      B[x] = A[i];
+      x++;
+    }
+  }
+}
+//mang chua so lan xuat hien moi phan tu
+let C = [x];
+for (i = 0; i < x; i++) {
+  C[i] = 0;
+}
+//Dem so lan xuat hien cua moi phan tu
+for (i = 0; i < x; i++) {
+  for (j = 0; j < A.length; j++) {
+    if (A[j] === B[i]) {
+      C[i]++;
+    }
+  }
+}
+//Tim so lan xuat hien nhieu nhat
+var max = C[0],
+  vtri = 0;
+y = 1;
+for (i = 1; i < x; i++) {
+  if (C[i] > max) {
+    max = C[i];
+    vtri = i;
+    y = 1;
+  }
+  if (C[i] === max) {
+    y++;
+  }
+}
+//Neu co 1 phan xuat hien nhieu nhat
+if (y === 1) {
+  console.log('Phan tu xuat hien nhieu nhat la: ' + B[vtri] + ' ,xuat hien ' + max + ' lan.');
+}  
+else {
+  var d = [y];
+  var z = 0;
+  for (i = 0; i < x; i++) {
+    if (C[i] === max) {
+      d[z] = i;
+      z++;
+    }
+  }
+  console.log('Phan tu xuat hien nhieu nhat la: ');
+  for (i = 0; i < z; i++) {
+    console.log(B[d[i]] + ' ,xuat hien ' + max + ' lan.');
+  }
+}
+
+Bài 8: Cho 2 mảng có ngẫu nhiên số phần tử, trộn 2 mảng thành 1 mảng, đảm bảo mảng kết quả sắp xếp giảm dần. 
+	b1: trộn 2 mảng thành 1: A + B = C
+	b2: sắp xếp mảng C theo thứ tự giảm dần 
+
+let A = [2, 5, 1, 6, 3, 7];
+let B = [8, 3, 5, 1, 2, 5];
+let C = A.concat(B);
+console.log("Trộn 2 mảng A và B ta được mảng C = [" + C + "]");
+C.sort(function(a, b) {
+	return b - a;  // a - b thì dùng trong sx tăng dần 
+});
+console.log("Mảng C sau khi sắp xếp giảm dần C = [" + C + "]");
+
+Bài 9: Cho 1 mảng gồm 10 object, 
+	   mỗi object student gồm có 2 thuộc tính là id: number & age: number. 
+	   Lọc các student có age > 10.
+
+let student = [ 
+	{id: 01, age: 5},
+	{id: 02, age: 6},
+	{id: 03, age: 7},
+	{id: 04, age: 8},
+	{id: 05, age: 9},
+	{id: 06, age: 10},
+	{id: 07, age: 11},
+	{id: 08, age: 15},
+	{id: 09, age: 16},
+	{id: 10, age: 18},
+];
+for (var i = 0; i < student.length; i ++) {
+	if(student[i]['age'] > 10) {
+		console.log(student[i]);
+	}
+}

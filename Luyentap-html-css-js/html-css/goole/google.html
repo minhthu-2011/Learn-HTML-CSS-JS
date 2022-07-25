@@ -1,0 +1,251 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <title>Google</title>
+	<style>
+		body {
+			background-color: #202124;
+			font-size: 14px;
+			font-family: arial,sans-serif;
+			color: #bdc1c6;
+			margin-left: 0px;
+			margin-right: 0px;
+			margin-bottom: 0px;
+		}
+		
+		.gg-header {
+			width: 200px;
+			display: flex;
+			justify-content: space-between;
+			float: right;
+			align-items: center;
+		}
+		
+		.gg-header a{
+			color: #FFFFFF;
+			text-decoration: none;  <!-- bo gach chan duoi link --> 
+		}
+		
+		.gg-header a:hover{
+			text-decoration: underline; <!-- them gach chan duoi link --> 
+		}
+		.gg-body {
+			height: 100%;
+			top: 100%;
+		}
+		.gg-app-icon {
+			background: #ccc;
+			width: 20px;
+			height: 20px;
+			border-radius: 9px;
+		}
+		.gg-app-icon:hover {
+			background: white;
+			cursor: pointer;
+		}
+		.gg-app-icon img{
+		    margin-left: 1.5px;
+			margin-top: 1.5px;
+			width: 17px;
+			height: 17px;
+		}
+		
+		.gg-person img {
+			width: 30px;
+			height: 30px;
+			border-radius: 20px;
+			margin-right: 15px;
+		}
+		
+		.gg-person:hover {
+			cursor: pointer;
+		}
+		
+		.google-img img{
+			width: 272px;
+			height: 92px;
+			margin-top: 200px;
+		}
+		
+		.google-img {
+			margin: 0px 168px; 
+			text-align: center;
+		}
+		
+		.search {
+			width: 582px;
+			height: 44px;
+			background-color: #202124;
+			color: #bdc1c6;
+			display: flex;    
+			border-radius: 20px;
+			align-items: center;
+			border: 1px solid #5f6368;
+			padding: 5px 8px 0px 14px;
+			margin: 0 auto;  <!-- can giua -->
+		}
+		.search:hover {
+			background: #303134;
+			border-color: #303134;
+		}
+		.search-icon img{
+			width: 20px;
+			height: 20px;
+			margin: -5px 0px 0px;
+			padding: 0px 13px 0px 0px;
+		}
+		.search-text input{
+			width: 447px;
+			height: 34px;
+			border: none;
+			color: #E8EAED;
+			outline: none; 
+			margin: -37px 0px 0px;
+			font: 16px arial sans-serif;
+			background-color:transparent; <!-- Mau nen cua phan tu se trong suot --> 
+		}
+		
+		.keyboard img{
+			width: 24px;
+			height: 24px;
+			margin: -5px 0px 0px;
+			padding: 0px 8px;
+		}
+		.keyboard:hover {
+			cursor: pointer;
+		}
+		
+		.search-mic img{
+			width: 24px;
+			height: 24px;
+			margin: -5px 0px 0px;
+			padding: 0px 10px;
+		}
+		.search-mic:hover {
+			cursor: pointer;
+		}
+		
+		.btn-search {
+			text-align: center;
+		}
+		
+		.btn1, .btn2 {
+			height: 36px;
+			background: #303134;
+			margin: 11px 4px;
+			padding: 0px 16px;
+			font-size: 14px;
+			border: 1px solid #303134;
+			border-radius: 4px;
+			color: #e8eaed;    
+		}
+		
+		.btn1:hover, .btn2:hover {
+			cursor: pointer;
+			border-color: #5f6368;
+		}
+		.language {
+			text-align: center;
+		}
+		.language a {
+			color: #8AB4F8;
+			font-size: 13px;
+			padding: 0px 3px;
+			text-decoration: none;
+		}
+		.language a:hover {
+			text-decoration: underline;
+		}
+		
+		.gg-footer {
+			width: 100%;
+			background: #171717;
+			position: fixed;
+			bottom: 0px;
+		}
+		
+		.country {
+			color: #9AA0A6;
+			font-size: 15px;
+			padding: 15px 30px;
+			border-bottom: 1px solid #212327;
+		}
+		
+		.footer-menu {
+			height: 50px;
+		}
+		
+		.footer-content a{
+			color: #999DA2;
+			font-size: 13px;
+			text-decoration: none;
+			padding: 15px;
+		}
+		
+		#menu1, #menu2 {
+			height: 32px;
+			padding: 8px;
+			display: flex;
+			font: 14px;
+		}
+		#menu1 {
+			display: flex;
+			flex-wrap: wrap;
+			float: left;
+			margin-left: 80px;
+		}
+		
+		#menu2 {
+			float: right;
+		}
+		
+		.footer-content a:hover {
+			text-decoration: underline;
+		}
+		
+	</style>
+</head>
+<body>
+    <div class="gg-header">
+		<a href="https://mail.google.com/mail/u/0/?ogbl#inbox">Gmail</a>
+		<a href="https://www.google.com.vn/imghp?hl=vi&authuser=0&ogbl">Hình ảnh</a>
+		<div class="gg-app-icon"><img src="image/grid.png"/></div>
+		<div class="gg-person"><img src="image/avatar.jpg"/></div>
+	</div>
+	<div class="gg-body">
+		<div class="google-img" ><img src="image/google-img.png"/></div>
+		<div class="search">
+			<div class="search-icon"><img src="image/search.png"/></div>
+			<div class="search-text"><input type="text" /></div>
+			<div class="keyboard"><img src="image/keyboard.png" id="keyboard"/></div>
+			<div class="search-mic"><img src="image/mic.jpg" id="mic"/></div>
+		</div>
+		<div class="btn-search">
+			<button class="btn1" href="https://mail.google.com/mail/u/0/?ogbl#inbox">Tìm trên Goolgle</button>
+			<button class="btn2" href="https://www.google.com.vn/imghp?hl=vi&authuser=0&ogbl">Xem trang đầu tiên tìm được</button>
+		</div>
+		<div class="language"> Google có các thứ tiếng:
+			<a href="https://mail.google.com/mail/u/0/?ogbl#inbox">English</a>
+			<a href="https://www.google.com.vn/imghp?hl=vi&authuser=0&ogbl">Francais</a>
+		</div>
+	</div>
+	<div class="gg-footer">
+		<div class="country"> Việt Nam </div>
+		<div class="footer-menu"> 
+			<footer class="footer-content"> 
+				<div id="menu1"> 
+					<a href="https://www.google.com.vn/url?sa=t&rct=j&q=&esrc=s&source=webhp&cd=&cad=rja&uact=8&ved=0ahUKEwj_qc2Gq5H2AhUWAt4KHXiODJkQkNQCCBM&url=https%3A%2F%2Fabout.google%2F%3Futm_source%3Dgoogle-VN%26utm_medium%3Dreferral%26utm_campaign%3Dhp-footer%26fg%3D1&usg=AOvVaw2SNXtHqghTBn6r4rmFsBTD">Giới thiệu</a>
+					<a href="https://www.google.com.vn/url?sa=t&rct=j&q=&esrc=s&source=webhp&cd=&cad=rja&uact=8&ved=0ahUKEwj_qc2Gq5H2AhUWAt4KHXiODJkQkdQCCBQ&url=https%3A%2F%2Fwww.google.com.vn%2Fintl%2Fvi_vn%2Fads%2F%3Fsubid%3Dww-ww-et-g-awa-a-g_hpafoot1_1!o2%26utm_source%3Dgoogle.com%26utm_medium%3Dreferral%26utm_campaign%3Dgoogle_hpafooter%26fg%3D1&usg=AOvVaw0K9jNtk7RqEECWvaAgez9Z">Quảng cáo</a>
+					<a href="https://www.google.com.vn/url?sa=t&rct=j&q=&esrc=s&source=webhp&cd=&cad=rja&uact=8&ved=0ahUKEwj_qc2Gq5H2AhUWAt4KHXiODJkQktQCCBU&url=https%3A%2F%2Fwww.google.com.vn%2Fservices%2F%3Fsubid%3Dww-ww-et-g-awa-a-g_hpbfoot1_1!o2%26utm_source%3Dgoogle.com%26utm_medium%3Dreferral%26utm_campaign%3Dgoogle_hpbfooter%26fg%3D1&usg=AOvVaw3F71hjNVZGwzCDY7OrpTWQ">Doanh Nghiệp</a>
+					<a href="https://google.com/search/howsearchworks/?fg=1">Cách hoạt động của Tìm kiếm</a>
+				</div>
+				<div id="menu2">
+					<a href="https://www.google.com.vn/url?sa=t&rct=j&q=&esrc=s&source=webhp&cd=&cad=rja&uact=8&ved=0ahUKEwj_qc2Gq5H2AhUWAt4KHXiODJkQ8awCCBY&url=https%3A%2F%2Fpolicies.google.com%2Fprivacy%3Fhl%3Dvi%26fg%3D1&usg=AOvVaw3I0ShkvRpluWLlVFNITPq9">Bảo mật</a>
+					<a href="https://www.google.com.vn/url?sa=t&rct=j&q=&esrc=s&source=webhp&cd=&cad=rja&uact=8&ved=0ahUKEwj_qc2Gq5H2AhUWAt4KHXiODJkQ8qwCCBc&url=https%3A%2F%2Fpolicies.google.com%2Fterms%3Fhl%3Dvi%26fg%3D1&usg=AOvVaw0WHCSz3TQUFp3Sck-RGI21">Điều khoản</a>
+					<a href="https://www.google.com.vn/">Cài đặt</a>
+				</div>
+			</footer>
+		</div>
+	</div>
+</body>
+</html>

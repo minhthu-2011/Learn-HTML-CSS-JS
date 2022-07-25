@@ -1,0 +1,203 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+<style>
+    .error {
+        color: red;
+    }
+    
+    * {
+        margin: 0;
+        padding: 0;
+    }
+    
+    body {
+        background-color: rgb(222, 196, 255);
+    }
+    
+    .general_div {
+        background-color: rgb(236, 246, 247);
+        border-radius: 10px;
+        border: none;
+        width: 400px;
+        position: relative;
+        top: 50px;
+        left: 150px;
+    }
+    
+    .btn {
+        background: #2691d9;
+        color: #fff;
+        font-weight: bold;
+    }
+    
+    .login_table input {
+        border: none;
+        border-radius: 5px;
+        width: 100%;
+        height: 30px;
+        font-size: 16px;
+        outline: none;
+        border-bottom: 2px solid #adadad;
+    }
+    
+    .login_table td input {
+        margin: 10px 5px;
+        text-indent: 10px;
+    }
+    
+</style>
+
+<body>
+    <div class="general_div">
+        <form style="margin: 25px;">
+            <h1 style="text-align: center;">Information form</h1>
+            <table class="login_table" style="margin: auto;">
+                <tr>
+                    <td>
+                        Username
+                    </td>
+                    <td>
+                        <input name="username" type="text" id="username" placeholder="type here..." />
+                    </td>
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td><span class="error" id="username_error"></span></td>
+                </tr>
+                <tr>
+                    <td>
+                        Password
+                    </td>
+                    <td>
+                        <input type="txt" id="password" placeholder="type here...">
+                    </td>
+
+
+                </tr>
+                <tr>
+                    <td></td>
+                    <td> <span class="error" id="password_error"></span></td>
+                </tr>
+                <tr>
+                    <td colspan="2">
+                        <input class="btn" onclick='send()' type="button" value="Submit">
+                    
+                        <input class="btn" onclick='resetForm()' type="button" value="Reset">
+                    </td>
+                </tr>
+                <tr>
+                    <td>
+                        <div></div>
+                    </td>
+
+
+                </tr>
+            </table>
+        </form>
+</body>
+
+<script>
+    var username = document.getElementById("username");
+    var password = document.getElementById("password");
+    var usernameError = document.getElementById("username_error");
+    var passwordError = document.getElementById("password_error");
+
+    function checkEmpty() {
+        if (username.value === "" || username.value == null) {
+            usernameError.innerText = "Vui lòng nhập username";
+        }
+        if (password.value === "" || password.value == null) {
+            passwordError.innerText = "Vui lòng nhập password";
+        }
+        return true;
+    }
+
+    // function checkInputLength(input, min, max) {
+
+    //     if (input.value.length < min) {
+    //         document.getElementsByClassName("error").innerText = `Vui lòng nhập lớn hơn ${min} ký tự`;
+
+    //     }
+    //     if (input.value.length > max) {
+    //         document.getElementsByClassName("error").innerText = `Vui lòng nhập nhỏ hơn ${max} ký tự`;
+    //     }
+    // } // hàm lỗi do không xác định được class để hiển thị báo lỗi.
+    // có thể tạo function check Empty + length . If check empty else if check length
+
+    function checkUserLength() {
+        var min = 6;
+        var max = 12;
+        if (username.value.length < min) {
+
+            usernameError.innerText = `Vui lòng nhập username lớn hơn ${min} ký tự`;
+        } else if (username.value.length > max) {
+
+            usernameError.innerText = `Vui lòng nhập username nhỏ hơn ${max} ký tự`;
+        } else {
+
+            usernameError.innerText = ``;
+        }
+    }
+
+    function checkPassLength() {
+        var min = 6;
+        var max = 12;
+        if (password.value.length < min) {
+            passwordError.innerText = `Vui lòng nhập password lớn hơn ${min} ký tự`;
+        } else if (password.value.length > max) {
+            passwordError.innerText = `Vui lòng nhập password nhỏ hơn ${max} ký tự`;
+        } else {
+            passwordError.innerText = ``;
+        }
+    }
+
+    function UserValidate(username) {
+        return /^[a-z]+$/.test(username);
+    }
+
+    function PasswwordValidate(password) {
+        return /^([A-Z])([\w_\.!@#$%^&*()]+)$/.test(username);
+    }
+
+    function send() {
+        checkUserLength();
+        checkPassLength();
+        // checkInputLength(username, 6, 10);
+        checkEmpty();
+
+        //check validate usename
+        if (!UserValidate(username)) {
+            console.log(" khong hop le")
+                // usernameError.innerText = "Username chỉ bao gồm ký tự từ a-z ";
+
+        } else {
+            console.log("hop le")
+                // usernameError.innerText = '';
+        }
+
+        //check validate pass
+        if (!PasswwordValidate(password)) {
+            console.log(" khong hop le")
+                // passwordError.innerText = "Password gồm ít nhất một ký tự viết hoa, ký tự số và ký tự đặc biệt !@#$%^& ";
+
+        } else {
+            console.log("hop le")
+                // passwordError.innerText = '';
+        }
+    }
+
+    function resetForm() {
+        document.getElementsByTagName('form')[0].reset();
+        // document.getElementById("alertText").;
+    }
+</script>
+
+</html>
