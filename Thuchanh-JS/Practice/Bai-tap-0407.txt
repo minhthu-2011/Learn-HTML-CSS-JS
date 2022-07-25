@@ -1,0 +1,28 @@
+1. Cho một mảng số nguyên a0, a1, a2, …, an-1. Liệt kê các phần tử xuất hiện trong mảng đúng 1 lần.
+2. Cho một mảng số nguyên a0, a1, a2, …, an-1. Liệt kê số lần xuất hiện của các phần tử trong một mảng đã cho.
+3. Cho một mảng số nguyên a0, a1, a2, …, an-1. Hãy sắp xếp mảng theo thứ tự tăng dần, sau đó chèn phần tử k vào mà vẫn đảm bảo mảng là tăng dần.
+4. Write a program to remove duplicate elements from an array
+5. Write a program to find the second largest element in an array
+6. Write a program to find the second smallest element in an array
+7. Write a program to get the difference between the largest and smallest values in an array of integers. The length of the array must be 1 and above
+8. Write a program to compute the average value of an array of integers except the largest and smallest values
+9. Write a program to check if an array of integers without 0 and -1
+10. Write a program to find the sum of the two elements of a given array which is equal to a given integer
+11. Write a program to print all the LEADERS in the array. An element is leader if it is greater than all the elements to its right side.
+12. Write a program to find smallest and second smallest elements of a given array
+13. Write a program to find all combination of four elements of a given array whose sum is equal to a given value.
+14. Write a program to arrange the elements of a given array of integers where all positive integers appear before all the negative integers 
+15.  Write a program to separate even and odd numbers of a given array of integers. Put all even numbers first, and then odd numbers
+16. Write a program to find maximum product of two integers in a given array of integers
+17. Write a Java program to shuffle a given array of integers (use random function)
+Example:
+Input :
+nums = { 1, 2, 3, 4, 5, 6 }
+Output:
+Shuffle Array: [4, 2, 6, 5, 1, 3] or [1,2,3,4,6,5] .... v.v
+18. Write a Java program to form the largest number from a given list of non negative integers
+Example:
+Input :
+nums = {1, 2, 3, 0, 4, 6}
+Output:
+Largest number using the said array numbers: 643210

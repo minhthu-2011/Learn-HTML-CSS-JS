@@ -1,0 +1,17 @@
+//---- Tim lieu ve ma ascii ---------
+1. Tính độ dài của chuỗi không dùng hàm có sẵn
+2. Nhập chuỗi s từ bàn phím. Kiểm tra tính đối xứng của chuỗi vừa nhập. Vd: hung2hung -> doi xung
+3. Nhập vào 1 chuỗi và 1 ký tự, kiểm tra ký tự có trong chuỗi hay không, nếu có đưa ra số lần xuất hiện của ký tự đó trong chuỗi.
+4. Chuyển chuỗi s thành chữ viết hoa vd: 'hihi' -> 'HIHI'
+5. Nhập vào tên đầy đủ -> in ra họ, tên
+6. Đếm có bao nhiêu khoảng trắng trong chuỗi
+7. Nhập vào một chuỗi, hãy loại bỏ những khoảng trắng thừa trong chuỗi
+8. Đổi tất cả các kí tự có trong chuỗi thành chữ thường
+9. Viết chương trình đảo ngược các kí tự trong chuỗi
+10. Cho chuỗi str, nhập vào vị trí vt và số kí tự cần xóa n, hăy xóa n kí tự tính từ vị trí vt trong chuỗi str.
+11. Viết chương trình tìm kiếm xem ký tự nào xuất nhiện nhiều nhất trong chuỗi
+12. Cho 1 từ tiếng anh, đếm số nguyên âm và phụ âm có trong từ đó
+13. Write a program to check whether a given substring is present in the given string
+vd: A: This is a test string -> input: string -> No exist in A
+14. Write a program to find the largest and smallest word in a string
+Vd: It is a string with smallest and largest word -> largest: smallest & smallest: a
