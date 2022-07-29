@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-gH2yIJqKdNHPEq0n4Mqa/HGKIhSkIHeL5AyhkYV8i59U5AR6csBvApHHNl/vI1Bx" crossorigin="anonymous">
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.2.0/dist/js/bootstrap.bundle.min.js" integrity="sha384-A3rJD856KowSb7dwlZdYEkO39Gagi7vIsF0jrRAoQmDKKtQBHUuLZ9AsSv4jD4Xa" crossorigin="anonymous"></script>
+    <title>Quản lý SV</title>
+    <style>
+        body {
+            height: 100vh;
+            width: 100%;
+            display: flex;
+            align-items: center;
+        }
+        .div-logo {
+            width: 80%;
+        }
+        .div-form {
+            margin-top: 35vh;
+            min-height: 80%;
+            width: 80%;
+        }
+        .lb-gender {
+            margin-right: 24px;
+        }
+        .form-student {
+            background: rgb(219, 238, 240);;
+            border-radius: 10px;
+            padding-bottom: 16px;
+            border:1px solid #868585;
+        }
+        .table-students {
+            background: rgb(219, 238, 240);
+            padding-bottom: 16px;
+            border-radius: 10px;
+            overflow: auto;
+        }
+        
+        .table-list-students {
+            border:1px solid #868585;
+        }
+        table tr{
+            background-color:#eee;
+        }
+        table thead tr:nth-child(1){
+            background-color:rgb(170, 217, 227);
+        }
+        .logo-heading {
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-top: 150px;
+            margin-bottom: 10px;
+        }
+        .img-logo {
+            width: 100px;
+        }
+        .blockquote-p {
+            color: rgb(216, 45, 45);
+            margin-top: 20px;
+        }
+        .btn-save {
+            width: 100px;
+            height: 40px;
+            margin-top: 15px;
+            border-radius: 10px;
+            border: none;
+            background-color: rgb(75, 164, 206);
+            color: rgb(251, 253, 255);
+        }
+        .btn-save:hover {
+            background-color: rgb(60, 158, 203);
+            color: rgb(251, 253, 255);
+        }
+        .form-select{
+            width: 80%;
+        }
+        .title-h5 {
+            color: rgb(31, 124, 128);
+            font-weight: 750;
+        }
+        .error {
+            color: red;
+            font-size: 10px;
+            margin-left: 100px;
+        }
+    </style>
+</head>
+<body>
+    <div>
+        <nav class="navbar bg-light fixed-top">
+            <div class="container-fluid div-logo">
+                <img src="img/logo.png" class="img-logo" alt="logoHNUE">
+                <figure style="margin-right: auto; margin-left: 30px;">
+                    <blockquote class="blockquote-p">
+                        <p class="h3">Hệ thống quản lý điểm sinh viên</p>
+                    </blockquote>
+                    <figcaption class="blockquote-footer">
+                        <cite title="Source Title">Trường Đại học Sư phạm Hà Nội</cite>
+                    </figcaption>
+                </figure>
+            </div>
+        </nav>
+    </div>
+    <div class="container-fluid div-form" onload="renderListStudent()">
+        <div class="row">
+            <div class="col-3 form-student">
+                <form>
+                    <h5 class="mt-3 title-h5">Thông tin sinh viên</h5>
+                    <div class="mb-3">
+                        <label for="fullname" class="form-label">Họ và tên</label>
+                        <input type="text" class="form-control" id="fullname">
+                        <span id="fullnameError" class="error"></span>
+                    </div>
+                    
+                    <div class="mb-3">
+                        <label for="gender" class="form-label lb-gender">Giới tính</label>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="gender" type="radio" id="male" value="1">
+                            <label class="form-check-label" for="inlineRadio1">Nam</label>
+                        </div>
+                        <div class="form-check form-check-inline">
+                            <input class="form-check-input" name="gender" type="radio" id="female" value="1">
+                            <label class="form-check-label" for="inlineRadio2">Nữ</label>
+                        </div>
+                        <span id="genderError" class="error"></span>
+                    </div>
+
+                    <div class="mb-3"> 
+                        <label for="age" class="form-label">Tuổi</label>
+                        <input type="number" class="form-control" id="age">
+                        <span id="ageError" class="error"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="math_score" class="form-label">Điểm toán</label>
+                        <input type="number" class="form-control" id="math_score">
+                        <span id="mathError" class="error"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="physics_score" class="form-label">Điểm lý</label>
+                        <input type="number" class="form-control" id="physics_score">
+                        <span id="physicsError" class="error"></span>
+                    </div>
+
+                    <div class="mb-3">
+                        <label for="chemistry_score" class="form-label">Điểm hóa</label>
+                        <input type="number" class="form-control" id="chemistry_score">
+                        <span id="chemistryError" class="error"></span>
+                    </div>
+                    <button type="button" id="save" onclick="saveStudent()" class="btn btn-save">Lưu lại</button>
+                    <button type="button" id="update" onclick="updateStudent()" class="btn btn-save" style="display: none;">Cập nhật</button>
+                </form>
+            </div>
+            <div class="col-1"></div>
+            <div class="col-8 table-students">
+                <div class="container">
+                    <div class="row mb-3 mt-3">
+                        <div class="col">
+                            <h5 class="title-h5">Danh sách sinh viên</h5>
+                        </div>
+                        <div class="col">
+                            <select class="form-select" aria-label="Default select example" id="sort" onchange="ascending()">
+                                <option value="default">--sort by default--</option>
+                                <option value="az">A - Z</option>
+                                <option value="za">Z - A</option>
+                            </select>
+                        </div>
+                        <div class="col">
+                            <div class="input-group flex-nowrap">
+                                <input type="search" class="form-control" id="searchTxt" placeholder="Tìm kiếm sinh viên" oninput="searchUser()">
+                            </div>
+                        </div>
+                    </div>
+                </div>
+                <table class="table table-bordered table-list-students">
+                    
+                </table>
+            </div>
+          </div>
+    </div>
+    <script src="ql_students.js"></script>
+    <script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>
+
+</body>
+</html>
