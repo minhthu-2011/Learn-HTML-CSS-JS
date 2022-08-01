@@ -244,6 +244,9 @@ function updateStudent() {
     let checkSV = checkStudent(student);
 
     let id = document.getElementById('id').value;
+    let fullname = student.fullname;
+    let fullnameStr = fullname.split(' ');
+    let name = fullnameStr[fullnameStr.length - 1];
     let gender = '';
     if(document.getElementById('male').checked) {
         gender = document.getElementById('male').value;
@@ -271,6 +274,7 @@ function updateStudent() {
 
     students[id] = {
         fullname: document.getElementById('fullname').value,
+        name: name,
         gender: gender,
         age: document.getElementById('age').value,
         mathScores: document.getElementById('mathScores').value,

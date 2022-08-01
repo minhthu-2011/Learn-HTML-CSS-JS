@@ -1,9 +1,22 @@
+function resetInput() {
+    document.getElementById('fullname').value = '';
+    document.getElementById('male').checked = false;
+    document.getElementById('female').checked = false;
+    document.getElementById('age').value = '';
+    document.getElementById('math_score').value = '';
+    document.getElementById('physics_score').value = '';
+    document.getElementById('chemistry_score').value = '';
+}
+
+function loginNext() {
+    location.assign("signin.html");
+}
 
 function getStudentForm() {
     let fullname = document.getElementById('fullname').value;
     let fullnameStr = fullname.split(' ');
     let name = fullnameStr[fullnameStr.length - 1];
-   
+
     let gender = '';
     if(document.getElementById('male').checked) {
         gender = document.getElementById('male').value;
@@ -12,7 +25,6 @@ function getStudentForm() {
     }
     let age = document.getElementById('age').value;
     let mathScores = document.getElementById('math_score').value;
-    console.log(mathScores);
     let physicsScores = document.getElementById('physics_score').value;
     let chemistryScores = document.getElementById('chemistry_score').value;
     let student = {
@@ -41,9 +53,9 @@ function checkStudent(student) {
     let fullname = student.fullname;
     let gender = student.gender;
     let age = student.age;
-    let mathScores = student.math_score;
-    let physicsScores = student.physics_score;
-    let chemistryScores = student.chemistry_score;
+    let mathScores = student.mathScores;
+    let physicsScores = student.physicsScores;
+    let chemistryScores = student.chemistryScores;
     let flag = true;
     if(_.isEmpty(fullname)) {
         document.getElementById('fullnameError').innerHTML = 'Vui lòng nhập họ và tên';
@@ -79,7 +91,6 @@ function checkStudent(student) {
     }
 
     //Kiểm tra điểm toán
-    
     if(_.isEmpty(mathScores)) {
         document.getElementById('mathError').innerHTML = 'Vui lòng nhập điểm toán của sinh viên';
         flag = false;
@@ -117,17 +128,6 @@ function checkStudent(student) {
     return flag;
 }
 
-function resetInput() {
-    document.getElementById('fullname').value = '';
-    document.getElementById('male').checked = false;
-    document.getElementById('female').checked = false;
-    document.getElementById('age').value = '';
-    document.getElementById('math_score').value = '';
-    document.getElementById('physics_score').value = '';
-    document.getElementById('chemistry_core').value = '';
-}
-
-
 function saveStudentLS(student) {
     let mediumScore = (Number(student.mathScores) + Number(student.physicsScores) + Number(student.chemistryScores)) / 3;
     let mediumScoreTwo = Math.round(mediumScore * 100) / 100;
@@ -158,7 +158,7 @@ function saveStudentLS(student) {
         mediumScoreTwo: mediumScoreTwo,
         ability: ability
     });
-
+    
     localStorage.setItem('students', JSON.stringify(students));
 
     this.renderListStudent();
@@ -166,22 +166,20 @@ function saveStudentLS(student) {
 
 function renderListStudent() {
     let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
-
-    let tableContent = `<thead>
-        <tr>
-            <th scope="col">STT</th>
-            <th scope="col">Họ và tên</th>
-            <td style="display:none;"> Name </td>
-            <th scope="col">Giới tính</th>
-            <th scope="col">Tuổi</th>
-            <th scope="col">Điểm toán</th>
-            <th scope="col">Diểm lý</th>
-            <th scope="col">Điểm hóa</th>
-            <th scope="col">Điểm TB</th>
-            <th scope="col">Học lực</th>
-            <th scope="col">Hành động</th>
-        </tr>
-    </thead>`;
+    
+    let tableContent = `<tr style="text-align: center; background-color: rgb(170, 217, 227); font: caption;">
+        <td> ID </td>
+        <td> Họ và tên </td>
+        <td style="display:none;"> Name </td>
+        <td> Giới tính </td>
+        <td> Tuổi </td>
+        <td> Điểm toán </td>
+        <td> Điểm lý </td>
+        <td> Điểm hóa </td>
+        <td> Điểm TB </td>
+        <td> Học lực </td>
+        <td> Hành động </td>
+    </tr>`;
 
     students.forEach((student, index) => {
         let id = index;
@@ -192,7 +190,7 @@ function renderListStudent() {
         let genderLabel = parseInt(student.gender) === 1 ? 'Nam' : 'Nữ';
         index++;
 
-        tableContent += `<tr style="background-color: #dfd8d8;">
+        tableContent += `<tr style="background-color: rgb(212, 228, 228);">
             <td style="text-align: center; ">${index}</td>
             <td>${student.fullname}</td>
             <td style="display:none;">${name}</td>
@@ -210,4 +208,167 @@ function renderListStudent() {
         </tr>`;
     });
     document.getElementById('grid-student').innerHTML = tableContent;
+}
+
+function deleteStudent(id) {
+    let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+    //Xoa 1 phan tu trong mang
+    students.splice(id, 1);
+    
+    localStorage.setItem('students', JSON.stringify(students));
+    renderListStudent();
+}
+
+function editStudent(id) {
+    let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+    
+    document.getElementById('fullname').value = students[id].fullname;
+    
+    if(students[id].gender == 1) {
+        document.getElementById('male').checked = true;
+    } else {
+        document.getElementById('female').checked = true;
+    }
+    document.getElementById('age').value = students[id].age;
+    document.getElementById('math_score').value = students[id].mathScores;
+    document.getElementById('physics_score').value = students[id].physicsScores;
+    document.getElementById('chemistry_score').value = students[id].chemistryScores;
+    document.getElementById('id').value = id;
+
+    document.getElementById('save').style.display = 'none';
+    document.getElementById('save').style.color = 'red';
+    document.getElementById('update').style.display = 'block';
+
+    localStorage.setItem('students', JSON.stringify(students));
+}
+
+function updateStudent() {
+    let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+    
+    let student = getStudentForm();
+    let checkSV = checkStudent(student);
+
+    let id = document.getElementById('id').value;
+    let fullname = student.fullname;
+    let fullnameStr = fullname.split(' ');
+    let name = fullnameStr[fullnameStr.length - 1];
+    let gender = '';
+    if(document.getElementById('male').checked) {
+        gender = document.getElementById('male').value;
+    } else if(document.getElementById('female').checked) {
+        gender = document.getElementById('female').value;
+    }
+    // cập nhật thông tin 
+    var math = document.getElementById('math_score').value;
+    var physics= document.getElementById('physics_score').value;
+    var chemistry= document.getElementById('chemistry_score').value;
+
+    let mediumScoreTwo = 0;
+    let ability = '';
+    let mediumScore = (Number(math) + Number(physics) + Number(chemistry)) / 3;
+    mediumScoreTwo = Math.round(mediumScore * 100) / 100;
+    if(mediumScoreTwo >= 8) {
+        ability = 'Giỏi';
+    } else if(mediumScoreTwo >= 6.5) {
+        ability = 'Khá';
+    } else if(mediumScoreTwo >= 5) {
+        ability = 'Trung bình';
+    } else {
+        ability = 'Yếu';
+    }
+
+    students[id] = {
+        fullname: document.getElementById('fullname').value,
+        name: name,
+        gender: gender,
+        age: document.getElementById('age').value,
+        mathScores: document.getElementById('math_score').value,
+        physicsScores: document.getElementById('physics_score').value,
+        chemistryScores: document.getElementById('chemistry_score').value,
+        mediumScoreTwo: mediumScoreTwo,
+        ability: ability
+    };
+
+    if(checkSV == true){
+        localStorage.setItem('students', JSON.stringify(students));
+        renderListStudent();
+        resetInput();
+        document.getElementById('save').style.display = 'block';
+        document.getElementById('update').style.display = 'none';
+    }
+}
+
+function renderListStudentSearch(arrStudents) {
+    let tableContent = `<tr style="text-align: center; background-color: rgb(170, 217, 227); font: caption;">
+        <th> ID </th>
+        <th> Họ và tên </th>
+        <th style="display:none;"> Name </th>
+        <th> Giới tính </th>
+        <th> Tuổi </th>
+        <th> Điểm toán </th>
+        <th> Điểm lý </th>
+        <th> Điểm hóa </th>
+        <th> Điểm TB </th>
+        <th> Học lực </th>
+        <th> Hành động </th>
+    </tr>`;
+
+    arrStudents.forEach((student, index) => {
+        let id = index;
+        let fullname = student.fullname;
+        let fullnameStr = fullname.split(' ');
+        let name = fullnameStr[fullnameStr.length - 1];
+
+        let genderLabel = parseInt(student.gender) === 1 ? 'Nam' : 'Nữ';
+        index++;
+
+        tableContent += `<tr style="background-color: rgb(212, 228, 228);">
+            <td style="text-align: center; ">${index}</td>
+            <td>${student.fullname}</td>
+            <td style="display:none;">${name}</td>
+            <td>${genderLabel}</td>
+            <td>${student.age}</td>
+            <td>${student.mathScores}</td>
+            <td>${student.physicsScores}</td>
+            <td>${student.chemistryScores}</td>
+            <td>${student.mediumScoreTwo}</td>
+            <td>${student.ability}</td>
+            <td style="text-align: center;">
+                <a href='#' style="color: #853838;" onclick="deleteStudent(${id})">Delete</a> |
+                <a href='#' style="color: #853838;" onclick="editStudent(${id})">Edit</a>
+            </td>
+        </tr>`;
+    });
+    document.getElementById('grid-student').innerHTML = tableContent;
+}
+
+//Tìm kiếm
+function searchUser() {
+    let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+    let searchTxt = document.getElementById("searchTxt").value;
+    let studentsSearch = [];
+    for(let i = 0; i < students.length; i ++) {
+        if(students[i].fullname.toUpperCase().includes(searchTxt.toUpperCase()) == true) {
+            studentsSearch.push(students[i]);
+        }
+    }
+    renderListStudentSearch(studentsSearch);
+}
+
+//tạo 1 cột chỉ chứa tên
+// Sắp xếp theo tên
+function ascending() {
+    let students = localStorage.getItem('students') ? JSON.parse(localStorage.getItem('students')) : [];
+    
+    let valueSelect = document.getElementById('sort').value;
+    let ascendingArr = students.sort((a, b) => {
+        if(valueSelect === 'az') {
+            return a.name.localeCompare(b.name);
+        } else if(valueSelect === 'za') {
+            return b.name.localeCompare(a.name);
+        } else {
+            return a.id - b.id;
+        }
+    });
+    renderListStudentSearch(ascendingArr);
 }

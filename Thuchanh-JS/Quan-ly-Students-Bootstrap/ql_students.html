@@ -14,39 +14,47 @@
             display: flex;
             align-items: center;
         }
+
         .div-logo {
             width: 80%;
         }
+
         .div-form {
             margin-top: 35vh;
             min-height: 80%;
             width: 80%;
         }
+
         .lb-gender {
             margin-right: 24px;
         }
+
         .form-student {
-            background: rgb(219, 238, 240);;
+            background: rgb(219, 238, 240);
             border-radius: 10px;
             padding-bottom: 16px;
-            border:1px solid #868585;
+            border: 1px solid #868585;
         }
+
         .table-students {
             background: rgb(219, 238, 240);
             padding-bottom: 16px;
             border-radius: 10px;
             overflow: auto;
+            border: 1px solid #868585;
         }
         
         .table-list-students {
-            border:1px solid #868585;
+            border: 1px solid #868585;
+            vertical-align: center;
+            height: 25px;
+            text-indent: 3px;
         }
+
         table tr{
             background-color:#eee;
         }
-        table thead tr:nth-child(1){
-            background-color:rgb(170, 217, 227);
-        }
+
         .logo-heading {
             display: flex;
             align-items: center;
@@ -54,13 +62,16 @@
             margin-top: 150px;
             margin-bottom: 10px;
         }
+
         .img-logo {
             width: 100px;
         }
+
         .blockquote-p {
             color: rgb(216, 45, 45);
             margin-top: 20px;
         }
+
         .btn-save {
             width: 100px;
             height: 40px;
@@ -70,25 +81,42 @@
             background-color: rgb(75, 164, 206);
             color: rgb(251, 253, 255);
         }
+
         .btn-save:hover {
             background-color: rgb(60, 158, 203);
             color: rgb(251, 253, 255);
         }
+
+        .btn-register {
+            width: 100px;
+            height: 40px;
+            border-radius: 5px;
+            border: none;
+            background-color: rgb(75, 164, 206);
+            color: rgb(251, 253, 255);
+        }
+
+        .btn-register:hover {
+            background-color: rgb(58, 146, 187);
+            color: rgb(251, 253, 255);
+        }
+
         .form-select{
             width: 80%;
         }
+
         .title-h5 {
             color: rgb(31, 124, 128);
             font-weight: 750;
         }
+
         .error {
             color: red;
             font-size: 10px;
-            margin-left: 100px;
         }
     </style>
 </head>
-<body>
+<body onload="renderListStudent()">
     <div>
         <nav class="navbar bg-light fixed-top">
             <div class="container-fluid div-logo">
@@ -101,6 +129,7 @@
                         <cite title="Source Title">Trường Đại học Sư phạm Hà Nội</cite>
                     </figcaption>
                 </figure>
+                <button type="button" id="logout" class="btn-register" onclick="loginNext()">Đăng xuất</button>
             </div>
         </nav>
     </div>
@@ -122,9 +151,9 @@
                             <label class="form-check-label" for="inlineRadio1">Nam</label>
                         </div>
                         <div class="form-check form-check-inline">
-                            <input class="form-check-input" name="gender" type="radio" id="female" value="1">
+                            <input class="form-check-input" name="gender" type="radio" id="female" value="2">
                             <label class="form-check-label" for="inlineRadio2">Nữ</label>
-                        </div>
+                        </div><br/>
                         <span id="genderError" class="error"></span>
                     </div>
 
@@ -151,8 +180,9 @@
                         <input type="number" class="form-control" id="chemistry_score">
                         <span id="chemistryError" class="error"></span>
                     </div>
-                    <button type="button" id="save" onclick="saveStudent()" class="btn btn-save">Lưu lại</button>
-                    <button type="button" id="update" onclick="updateStudent()" class="btn btn-save" style="display: none;">Cập nhật</button>
+                    <input id="id" type="hidden"/>
+                    <button id="save" class="btn-save" onclick="saveStudent()">Lưu lại</button>
+                    <button id="update" class="btn-save" style="display: none;" onclick="updateStudent()">Cập nhật</button>
                 </form>
             </div>
             <div class="col-1"></div>
@@ -176,14 +206,12 @@
                         </div>
                     </div>
                 </div>
-                <table class="table table-bordered table-list-students">
-                    
+                <table id="grid-student" class="table table-bordered table-list-students">
                 </table>
             </div>
           </div>
     </div>
-    <script src="ql_students.js"></script>
     <script src='https://cdn.jsdelivr.net/g/lodash@4(lodash.min.js+lodash.fp.min.js)'></script>
-
+    <script src="ql_students.js"></script>
 </body>
 </html>
