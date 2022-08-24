@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Validated Form Login</title>
+    <style>
+        *{
+            padding: 0;
+            margin: 0;
+        }
+        body {
+            background-color: rgb(219, 238, 240);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            font-family: sans-serif;
+        }
+        .container {
+            position: relative;
+            margin-top: 100px;
+            width: 450px;
+            height: auto;
+            background: #fff;
+            border-radius: 5px;
+        }
+        .label {
+            padding: 20px 130px;
+            font-size: 35px;
+            font-weight: bold;
+            color: rgb(31, 124, 128);
+        }
+        .login_form {
+            padding: 20px 40px;
+        }
+        .login_form .font_email {
+            font-size: 18px;
+            color: #130f40;
+            margin: 5px 0;
+        }
+        .login_form input {
+            height: 40px;
+            width: 350px;
+            padding: 0 5px;
+            font-size: 18px;
+            outline: none;
+            border: 1px solid silver;
+        }
+        .login_form .font_pass {
+            margin-top: 30px;
+        }
+        .login_form button {
+            margin: 45px 0 30px 0;
+            height: 45px;
+            width: 365px;
+            font-size: 20px;
+            color: #fff;
+            outline: none;
+            cursor: pointer;
+            font-weight: bold;
+            background-color: rgb(75, 164, 206);
+            border-radius: 3px;
+            border: 1px solid #3949AB;
+        }
+        .login_form button:hover {
+            background: rgb(58, 146, 187);
+        }
+        #email_error,
+        #pass_error {
+            margin-top: 5px;
+            width: 345px;
+            font-size: 16px;
+            color: #dc4949;
+            padding: 5px 5px;
+            display: none;
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <h1 class="label">User Login</h1>
+        <form class="login_form" method="post" onsubmit="return validated()">
+            <div class="font_email">Email</div>
+            <input type="text" id="email">
+            <div id="email_error">Yêu cầu nhập email</div>
+            <div class="font_pass">Password</div>
+            <input type="password" id="password">
+            <div id="pass_error">Yêu cầu nhập password</div>
+            <button>Login</button>
+        </form>
+    </div>
+    <script>
+        let email = document.getElementById('email').value;
+        let password = document.getElementById('password').value;
+        let email_error = document.getElementById('email_error');
+        let pass_error = document.getElementById('pass_error');
+         
+        function validated() {
+            if(email.length < 9) {
+                email_error.style.display = 'block';
+                email.focus();
+                return false;
+            } else {
+                email_error.style.display = 'none';
+                return true;
+            }
+            if(password.length < 6) {
+                pass_error.style.display = 'block';
+                password.focus();
+                return false;
+            } else {
+                pass_error.style.display = 'none';
+                return true;
+            }
+        }
+        
+    </script>
+</body>
+</html>
