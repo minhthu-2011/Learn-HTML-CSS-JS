@@ -383,3 +383,11 @@ function ascending() {
     });
     renderListStudentSearch(ascendingArr);
 }
+
+//# Dockerfile
+//    FROM node:16
+//    WORKDIR /usr/src/app
+//    COPY package.json render_student.js ./
+//    RUN npm install
+//    EXPOSE 5000
+//    CMD ['node' ,'render_student.js']
